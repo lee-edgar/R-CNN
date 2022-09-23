@@ -20,7 +20,8 @@ Region proposal의 Selective search(SS) : "object가 있을 만한 후보 영역
 ![Screen Shot 2022-09-21 at 3.30.09 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/88e8a0f1-badf-48d6-a781-81a2f782dd6b/Screen_Shot_2022-09-21_at_3.30.09_PM.png)
 
 ![https://s3.us-west-2.amazonaws.com/secure.notion-static.com/88e8a0f1-badf-48d6-a781-81a2f782dd6b/Screen_Shot_2022-09-21_at_3.30.09_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220923%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220923T044110Z&X-Amz-Expires=86400&X-Amz-Signature=54df0709d4ab87334aa88d516447879c862f308b14443d5ae365671bcb75bc28&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen%2520Shot%25202022-09-21%2520at%25203.30.09%2520PM.png%22&x-id=GetObject]
-Image input → extract region proposal을 실행 해 2000건의 warped region생성. →  추후 classifiaction dense layer를 위한 227*227사이즈 조절(보통 warped region의 사이즈를 늘리기 때문에 찌그러짐) → CNN적용(flatten FC Input layer까지)하여 feature map생성 후  → SVM Classifier(classification / regression)
+Image input → extract region proposal을 실행 해 2000건의 warped region생성. →  추후 classifiaction dense layer를 위한 227*227사이즈 조절(보통 warped region의 사이즈를 늘리기 때문에 찌그러짐) → CNN적용(flatten FC Input layer<img width="465" alt="Screen Shot 2022-07-06 at 5 26 32 PM" src="https://user-images.githubusercontent.com/61241244/191893264-46283e40-7789-49c9-8117-e9a20375b821.png">
+까지)하여 feature map생성 후  → SVM Classifier(classification / regression)
 
 R-CNN순서:
 
