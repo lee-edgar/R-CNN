@@ -13,14 +13,15 @@ Region Proposal :
     - edge boxes : 이미지의 엣지, 라인의 유사영역묶기
     - selective search : 이미지의 픽셀의 유사영역 묶고, 해당 영역을 점차적으로 넓혀감.
 
+
 Region proposal의 Selective search(SS) : "object가 있을 만한 후보 영역을 찾자"
 
 - 컬러, 무늬(texture), 크기(size), 형태(shape)에 따라서 유사한 Region 을 계층적으로 계산 → 이웃하는 region 사이의 유사도를 구하고, 유사도가 높은 것 부터 차례대로 Merge 하여 2000개 구성
 - 원본이미지 -> 최초 segmentation -> 후보 objects 검출 -> segmentation -> 후보 objects 검출
 - segmentation 그룹핑(중복되는 segment 합치기)을 계속 반복하면서 수행하게 되면, 후보 objects 검출 정확도가 올라가게됨.
+- ![Screen Shot 2022-09-23 at 1 47 19 PM](https://user-images.githubusercontent.com/61241244/191893752-025edf3c-0706-40eb-92b6-f1f6388422b8.png)
 
-![Screen Shot 2022-09-21 at 3.30.09 PM.png](RCNN%20bd87bbd35c0e4983959d4cbc8fd4079c/Screen_Shot_2022-09-21_at_3.30.09_PM.png)
-![Screen Shot 2022-09-21 at 3.30.09 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/88e8a0f1-badf-48d6-a781-81a2f782dd6b/Screen_Shot_2022-09-21_at_3.30.09_PM.png)
+
 Image input → extract region proposal을 실행 해 2000건의 warped region생성. →  추후 classifiaction dense layer를 위한 227*227사이즈 조절(보통 warped region의 사이즈를 늘리기 때문에 찌그러짐) → CNN적용(flatten FC Input layer까지)하여 feature map생성 후  → SVM Classifier(classification / regression)
 
 R-CNN순서:
