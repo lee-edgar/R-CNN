@@ -19,7 +19,7 @@ Region proposal의 Selective search(SS) : "object가 있을 만한 후보 영역
 - 컬러, 무늬(texture), 크기(size), 형태(shape)에 따라서 유사한 Region 을 계층적으로 계산 → 이웃하는 region 사이의 유사도를 구하고, 유사도가 높은 것 부터 차례대로 Merge 하여 2000개 구성
 - 원본이미지 -> 최초 segmentation -> 후보 objects 검출 -> segmentation -> 후보 objects 검출
 - segmentation 그룹핑(중복되는 segment 합치기)을 계속 반복하면서 수행하게 되면, 후보 objects 검출 정확도가 올라가게됨.
-- ![Screen Shot 2022-09-23 at 1 47 19 PM](https://user-images.githubusercontent.com/61241244/191893752-025edf3c-0706-40eb-92b6-f1f6388422b8.png)
+![Screen Shot 2022-09-23 at 1 47 19 PM](https://user-images.githubusercontent.com/61241244/191893752-025edf3c-0706-40eb-92b6-f1f6388422b8.png)
 
 
 Image input → extract region proposal을 실행 해 2000건의 warped region생성. →  추후 classifiaction dense layer를 위한 227*227사이즈 조절(보통 warped region의 사이즈를 늘리기 때문에 찌그러짐) → CNN적용(flatten FC Input layer까지)하여 feature map생성 후  → SVM Classifier(classification / regression)
@@ -44,14 +44,12 @@ selective search algorithm
 CNN은 인풋값의 크기가 고정되어 있기때문에, region proposal level에서 나온 bounding box의 사이즈들을 같은 사이즈로(227*227) 통일해주는 Warping 진행.
 
 ### 3. SVM(Support Vector Machine) Level
-
-![Screen Shot 2022-09-22 at 12.57.00 PM.png](RCNN%20bd87bbd35c0e4983959d4cbc8fd4079c/Screen_Shot_2022-09-22_at_12.57.00_PM.png)
+![Screen Shot 2022-09-23 at 1 48 40 PM](https://user-images.githubusercontent.com/61241244/191893883-506841bc-7f7c-4e5e-b735-93ffab36f364.png)
 
 - feature vector를 Linear SVM으로 Class별 Score를 계산하여 Clssification
 
 ### 4. Bounding Box Regression
-
-![Screen Shot 2022-09-22 at 8.37.46 PM.png](RCNN%20bd87bbd35c0e4983959d4cbc8fd4079c/Screen_Shot_2022-09-22_at_8.37.46_PM.png)
+![Screen Shot 2022-09-23 at 1 49 08 PM](https://user-images.githubusercontent.com/61241244/191893929-a8c0d557-e90e-4f57-9300-511520a79a28.png)
 
 - P : region proposal 통해 제안된 Bounding Box
 - G : Ground Truth Bounding Box( 정답박스)
