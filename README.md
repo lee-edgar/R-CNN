@@ -20,7 +20,7 @@ Region proposal의 Selective search(SS) : "object가 있을 만한 후보 영역
 - segmentation 그룹핑(중복되는 segment 합치기)을 계속 반복하면서 수행하게 되면, 후보 objects 검출 정확도가 올라가게됨.
 
 ![Screen Shot 2022-09-21 at 3.30.09 PM.png](RCNN%20bd87bbd35c0e4983959d4cbc8fd4079c/Screen_Shot_2022-09-21_at_3.30.09_PM.png)
-
+![Screen Shot 2022-09-21 at 3.30.09 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/88e8a0f1-badf-48d6-a781-81a2f782dd6b/Screen_Shot_2022-09-21_at_3.30.09_PM.png)
 Image input → extract region proposal을 실행 해 2000건의 warped region생성. →  추후 classifiaction dense layer를 위한 227*227사이즈 조절(보통 warped region의 사이즈를 늘리기 때문에 찌그러짐) → CNN적용(flatten FC Input layer까지)하여 feature map생성 후  → SVM Classifier(classification / regression)
 
 R-CNN순서:
